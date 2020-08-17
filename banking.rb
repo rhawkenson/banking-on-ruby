@@ -31,5 +31,6 @@ class Account
       pin_error
     end 
   end
-
 end
+
+checking_account = Account.new('wedding', 5_000)
