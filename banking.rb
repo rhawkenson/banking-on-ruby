@@ -11,7 +11,7 @@ class Account
     @pin = 1234
   end
   def pin_error
-    return "Access denied: incorrect PIN."
+    puts "Access denied: incorrect PIN."
   end
 
   public 
@@ -23,23 +23,27 @@ class Account
     end
   end
   def withdraw(pin_number, amount)
-    if pin_number == @pin
+    if pin_number == pin
       if amount <= @balance
         @balance -= amount
         puts "Withdrew #{amount}. New balance: #{@balance}."
       else 
         puts "ERROR! Your withdraw cannot exceed you balance. Current Balance: #{@balance}"
+      end
     else
       pin_error
     end 
   end
   def deposit(pin_number, amount)
-    if pin_number == @pin
+    if pin_number == pin
       @balance += amount
-      puts "Withdrew #{amount}. New balance: #{@balance}."
+      puts "Deposited: #{amount}. New balance: #{@balance}."
+    else 
+      pin_error
+    end
   end
-  def
-
 end
 
 checking_account = Account.new('wedding', 5_000)
+checking_account.deposit(1234, 3_000)
+checking_account.withdraw(1234, 30)
